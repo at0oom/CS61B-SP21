@@ -39,6 +39,20 @@ public class DebugExercise2 {
      * a[i] and b[i]. For example, if a = {1, -10, 3}
      * and b = {0, 20, 5}, this function will return {1, 20, 5}.
      * */
+    public static int[] arrayMax(int[] a, int[] b){
+        if (a.length != b.length) {
+            System.out.println("ERROR! Arrays don't match");
+            return null;
+        }
+        int[] returnArray = new int[a.length];
+        for (int i = 0; i < a.length; i += 1) {
+            int biggerValue = Math.max(a[i], b[i]);
+
+            returnArray[i] = biggerValue;
+        }
+        return returnArray;
+    }
+    /*
     public static int[] arrayMax(int[] a, int[] b) {
         if (a.length != b.length) {
             System.out.println("ERROR! Arrays don't match");
@@ -53,6 +67,8 @@ public class DebugExercise2 {
         return returnArray;
     }
 
+     */
+
     /** Returns the sum of all elements in x. */
     public static int arraySum(int[] x) {
         int i = 0;
@@ -64,15 +80,31 @@ public class DebugExercise2 {
         return sum;
     }
 
+
+    //public static int sumOfElementwiseMaxes(int[] a, int[] b) {
+    //    int[] maxes = arrayMax(a, b);
+    //    int sumofMaxes = arraySum(maxes);
+    //    return sumofMaxes;
+    //}
+
+
     /** Returns the sum of the element-wise max of a and b.
      *  For example if a = {2, 0, 10, 14} and b = {-5, 5, 20, 30},
      *  the result should be 57.
      * */
-    public static int sumOfElementwiseMaxes(int[] a, int[] b) {
-        int[] maxes = arrayMax(a, b);
-        int sumofMaxes = arraySum(maxes);
-        return sumofMaxes;
+    public static int sumOfElementwiseMaxes(int[] a,int[] b){
+        int i = 0;
+        int result = 0;
+        for (i = 0; i < a.length; i++){
+            if (a[i] < b[i]){
+                result = result + b[i];
+            }else{
+                result = result + a[i];
+            }
+        }
+        return result;
     }
+
 
 
     public static void main(String[] args) {
@@ -82,4 +114,5 @@ public class DebugExercise2 {
         int sumOfElementwiseMaxes = sumOfElementwiseMaxes(a, b);
         System.out.println(sumOfElementwiseMaxes);
     }
+
 }
